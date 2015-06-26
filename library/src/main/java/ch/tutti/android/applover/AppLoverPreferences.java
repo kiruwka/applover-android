@@ -124,7 +124,12 @@ public class AppLoverPreferences {
      * Clears all the preferences.
      */
     public void clear() {
-        mPreferences.edit().clear().commit();
+        // remember if was shown before
+        boolean shownBefore = isShownBefore();
+        mPreferences.edit().clear().commit(); // clear all prefs
+        if (shownBefore) {
+            setShownBefore();
+        }
     }
 
     public void setShownBefore() {
