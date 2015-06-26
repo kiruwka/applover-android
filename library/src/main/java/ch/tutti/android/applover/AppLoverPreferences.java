@@ -29,6 +29,8 @@ public class AppLoverPreferences {
     private static final String KEY_CUSTOM_EVENT = "applover_custom_event_";
 
     private static final String KEY_DO_NOT_SHOW_ANYMORE = "applover_do_not_show_anymore";
+    
+    private static final String KEY_USER_SAID_NO = "applover_User_has_clicked_No";
 
     private final SharedPreferences mPreferences;
 
@@ -88,11 +90,28 @@ public class AppLoverPreferences {
     }
 
     /**
+     * returns whether user has previously clicked NO. <br>
+     * Note: this flag can be reset with the rest of the flags, see {@link #clear()}, on next app version update for instance
+     * 
+     */
+    public boolean userSaidNo() {
+        return mPreferences.getBoolean(KEY_USER_SAID_NO, false);
+    }
+
+    /**
      * Sets if the dialog should not be shown anymore hereafter. Called when the dialogs task was
      * fulfilled.
      */
     public void setDoNotShowAnymore() {
         mPreferences.edit().putBoolean(KEY_DO_NOT_SHOW_ANYMORE, true).commit();
+    }
+
+    /**
+     * sets if the user has previously said "No". Leaves the possibility to check this
+     * and possibly show dialog again, for instance at next app version
+     */
+    public void setUserSaidNo() {
+        mPreferences.edit().putBoolean(KEY_USER_SAID_NO, true).commit();
     }
 
     /**

@@ -238,7 +238,7 @@ public class AppLover {
 
     private boolean shouldShowRateDialog(Context context) {
         AppLoverPreferences preferences = new AppLoverPreferences(context);
-        boolean stillShow = !(preferences.isDoNotShowAnymore());
+        boolean stillShow = !preferences.isDoNotShowAnymore() && !preferences.userSaidNo();
         return stillShow &&
                 (mShowDialogCriteria == null
                         || mShowDialogCriteria.isCriteriaMet(context, this, preferences));
