@@ -227,6 +227,8 @@ public class AppLover {
      */
     public void showDialogIfConditionsMet(final Activity activity) {
         if (shouldShowRateDialog(activity) && !AppLoverDialogHelper.isDialogShown(activity)) {
+            // indicate it was shown before
+            new AppLoverPreferences(activity.getApplicationContext()).setShownBefore();
             AppLoverDialogHelper.showDialog(
                     activity, AppLover.DIALOG_TYPE_FIRST, getAppNameResId(activity));
         }
@@ -278,6 +280,13 @@ public class AppLover {
 
     public boolean isDoNotShowAnymore(Context context) {
         return new AppLoverPreferences(context).isDoNotShowAnymore();
+    }
+
+    /**
+     * indicates whether we already shown rating dialogs
+     */
+    public boolean isShownBefore(Context context) {
+        return new AppLoverPreferences(context).isShownBefore();
     }
 
     public void trackDialogShown(int dialogType) {

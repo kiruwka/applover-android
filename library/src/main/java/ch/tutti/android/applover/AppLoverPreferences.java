@@ -31,6 +31,8 @@ public class AppLoverPreferences {
     private static final String KEY_DO_NOT_SHOW_ANYMORE = "applover_do_not_show_anymore";
     
     private static final String KEY_USER_SAID_NO = "applover_User_has_clicked_No";
+    
+    private static final String KEY_SHOWN_BEFORE = "applover_dialog_was_shown_before";
 
     private final SharedPreferences mPreferences;
 
@@ -89,6 +91,10 @@ public class AppLoverPreferences {
         return mPreferences.getBoolean(KEY_DO_NOT_SHOW_ANYMORE, false);
     }
 
+    public boolean isShownBefore() {
+        return mPreferences.getBoolean(KEY_SHOWN_BEFORE, false);
+    }
+    
     /**
      * returns whether user has previously clicked NO. <br>
      * Note: this flag can be reset with the rest of the flags, see {@link #clear()}, on next app version update for instance
@@ -119,5 +125,9 @@ public class AppLoverPreferences {
      */
     public void clear() {
         mPreferences.edit().clear().commit();
+    }
+
+    public void setShownBefore() {
+        mPreferences.edit().putBoolean(KEY_SHOWN_BEFORE, true).commit();
     }
 }
