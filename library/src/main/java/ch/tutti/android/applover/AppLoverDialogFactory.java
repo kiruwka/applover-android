@@ -137,11 +137,15 @@ class AppLoverDialogFactory {
                         AppLover.get(null).trackDialogButtonPressed(
                                 AppLover.DIALOG_TYPE_EMAIL, AppLover.BUTTON_YES);
                         String feedbackEmail = AppLover.get(context).getFeedbackEmail();
+                        int feedbackEmailSubject = AppLover.get(context).getFeedbackEmailSubject();
+                        if (feedbackEmailSubject <= 0) {
+                            feedbackEmailSubject = R.string.applover_feedback_subject;
+                        }
                         Intent intent = new Intent(Intent.ACTION_SEND);
                         intent.setType("message/rfc822");
                         intent.putExtra(Intent.EXTRA_EMAIL, new String[]{feedbackEmail});
                         intent.putExtra(Intent.EXTRA_SUBJECT,
-                                Phrase.from(context, R.string.applover_feedback_subject)
+                                Phrase.from(context, feedbackEmailSubject)
                                         .putOptional("app_name", context.getString(appNameResId))
                                         .format().toString()
                         );

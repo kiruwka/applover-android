@@ -68,6 +68,7 @@ public class AppLover {
     private int mAppNameResId;
 
     private String mFeedbackEmail;
+    private int mFeedbackEmailSubjectId;
 
     private AppLoverDialogsProperties mDialogsProperties;
 
@@ -118,6 +119,15 @@ public class AppLover {
     public AppLover setFeedbackEmail(String email) {
         mFeedbackEmail = email;
         return this;
+    }
+    
+    public AppLover setFeedbackEmailSubject(int stringId) {
+        mFeedbackEmailSubjectId = stringId; 
+        return this;
+    }
+    
+    public int getFeedbackEmailSubject() {
+        return mFeedbackEmailSubjectId;
     }
 
     /**
