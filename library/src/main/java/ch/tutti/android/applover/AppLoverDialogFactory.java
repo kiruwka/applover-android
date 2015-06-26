@@ -115,7 +115,7 @@ class AppLoverDialogFactory {
                     public void onClick(DialogInterface dialog, int which) {
                         AppLover.get(null).trackDialogButtonPressed(
                                 AppLover.DIALOG_TYPE_RATE, AppLover.BUTTON_NO);
-                        new AppLoverPreferences(context).setDoNotShowAnymore();
+                        new AppLoverPreferences(context).setUserSaidNo();
                     }
                 }
         );
@@ -167,7 +167,7 @@ class AppLoverDialogFactory {
                     public void onClick(DialogInterface dialog, int which) {
                         AppLover.get(null).trackDialogButtonPressed(
                                 AppLover.DIALOG_TYPE_EMAIL, AppLover.BUTTON_NO);
-                        new AppLoverPreferences(context).setDoNotShowAnymore();
+                        new AppLoverPreferences(context).setUserSaidNo();
                     }
                 }
         );
