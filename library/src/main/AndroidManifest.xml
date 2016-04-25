@@ -5,8 +5,7 @@
 
     <uses-sdk
         android:minSdkVersion="8"
-        android:targetSdkVersion="19"
-        tools:ignore="GradleOverrides" />
+        android:targetSdkVersion="19"/>
 
     <application />
 
